@@ -62,7 +62,6 @@ def change_permissions_recursive(path, mode):
     for root, dirs, files in os.walk(path, topdown=False):
         for dir in [os.path.join(root,d) for d in dirs]:
             if not os.path.islink(dir):
-                print("setting mode of " + dir + " to " + str(mode))
                 os.chmod(dir, mode)
         for file in [os.path.join(root, f) for f in files]:
             if not os.path.islink(file):
