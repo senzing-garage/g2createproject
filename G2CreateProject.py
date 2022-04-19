@@ -173,8 +173,6 @@ if __name__ == '__main__':
 
     # python
     set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'python'), 0o660)
-    os.chmod(os.path.join(target_path, 'python', 'G2ConfigTool.readme'), 0o660)
-    os.chmod(os.path.join(target_path, 'python', 'governor_postgres_xid.py'), 0o660)
     os.chmod(os.path.join(target_path, 'python', 'G2Audit.py'), 0o770)
     os.chmod(os.path.join(target_path, 'python', 'G2Command.py'), 0o770)
     os.chmod(os.path.join(target_path, 'python', 'G2ConfigTool.py'), 0o770)
@@ -188,8 +186,6 @@ if __name__ == '__main__':
 
     # resources
     set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'resources'), 0o660)
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db'), 0o660)
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db.template'), 0o660)
     os.chmod(os.path.join(target_path, 'resources', 'templates', 'setupEnv'), 0o770)
 
     # sdk
