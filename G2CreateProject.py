@@ -156,9 +156,9 @@ if __name__ == '__main__':
     # folder permissions
     set_folder_permissions_recursive(target_path, 0o770, folders_to_ignore=['jdk-11.0.10+9-jre'])
     # var and resources are exceptions
-    set_folder_permissions_recursive(os.path.join(target_path, 'var'), 0o740)
-    set_folder_permissions_recursive(os.path.join(target_path, 'python'), 0o740)
-    set_folder_permissions_recursive(os.path.join(target_path, 'resources'), 0o750)
+    #set_folder_permissions_recursive(os.path.join(target_path, 'var'), 0o740)
+    #set_folder_permissions_recursive(os.path.join(target_path, 'python'), 0o740)
+    #set_folder_permissions_recursive(os.path.join(target_path, 'resources'), 0o750)
     
     # root
     set_permissions_on_files_in_folder(target_path, 0o660)
@@ -175,19 +175,29 @@ if __name__ == '__main__':
     set_permissions_on_files_in_folder(os.path.join(target_path, 'lib'), 0o660, files_to_ignore=['g2.jar', 'g2rst.jar'])
     
     # sdk
-    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'sdk'), 0o644)
+    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'sdk'), 0o664)
     
     # python
-    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'python'), 0o640)
+    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'python'), 0o660)
     # some exceptions
     os.chmod(os.path.join(target_path, 'python', 'G2ConfigTool.readme'), 0o440)
-    os.chmod(os.path.join(target_path, 'python', 'governor_postgres_xid.py'), 0o640)
+    os.chmod(os.path.join(target_path, 'python', 'governor_postgres_xid.py'), 0o660)
+    os.chmod(os.path.join(target_path, 'python', 'G2Audit.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2Command.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2ConfigTool.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2Database.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2Explorer.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2Export.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2Loader.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2SetupConfig.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'G2Snapshot.py'), 0o770)
+    os.chmod(os.path.join(target_path, 'python', 'SenzingGo.py'), 0o770)
 
     # resources
-    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'resources'), 0o640)
+    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'resources'), 0o660)
     # some exceptions
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db'), 0o740)
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db.template'), 0o740)
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'setupEnv'), 0o740)
+    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db'), 0o770)
+    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db.template'), 0o770)
+    os.chmod(os.path.join(target_path, 'resources', 'templates', 'setupEnv'), 0o770)
 
     print('Successfully created.')
