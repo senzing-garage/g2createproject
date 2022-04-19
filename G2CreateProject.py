@@ -2,10 +2,10 @@
 
 import argparse
 import json
+import os
 import shutil
 import sys
 import textwrap
-import os
 from pathlib import Path
 
 
@@ -153,34 +153,27 @@ if __name__ == '__main__':
         for p in senzing_path_subs:
             find_replace_in_file(f, p[0], str(p[1]))
 
-    # folder permissions
+    # Folder permissions
     set_folder_permissions_recursive(target_path, 0o770, folders_to_ignore=['jdk-11.0.10+9-jre'])
-    # var and resources are exceptions
-    #set_folder_permissions_recursive(os.path.join(target_path, 'var'), 0o740)
-    #set_folder_permissions_recursive(os.path.join(target_path, 'python'), 0o740)
-    #set_folder_permissions_recursive(os.path.join(target_path, 'resources'), 0o750)
-    
+
     # root
     set_permissions_on_files_in_folder(target_path, 0o660)
-    # an exception
     os.chmod(os.path.join(target_path, 'setupEnv'), 0o770)
 
     # bin
-    set_permissions_on_files_in_folder(os.path.join(target_path, 'bin'), 0o550)
+    set_permissions_on_files_in_folder(os.path.join(target_path, 'bin'), 0o770)
 
     # etc
     set_permissions_on_files_in_folder(os.path.join(target_path, 'etc'), 0o660)
 
     # lib
     set_permissions_on_files_in_folder(os.path.join(target_path, 'lib'), 0o660, files_to_ignore=['g2.jar', 'g2rst.jar'])
-    
-    # sdk
-    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'sdk'), 0o664)
-    
+    os.chmod(os.path.join(target_path, 'lib', 'g2.jar'), 0o664)
+    os.chmod(os.path.join(target_path, 'lib', 'g2rst.jar'), 0o664)
+
     # python
     set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'python'), 0o660)
-    # some exceptions
-    os.chmod(os.path.join(target_path, 'python', 'G2ConfigTool.readme'), 0o440)
+    os.chmod(os.path.join(target_path, 'python', 'G2ConfigTool.readme'), 0o660)
     os.chmod(os.path.join(target_path, 'python', 'governor_postgres_xid.py'), 0o660)
     os.chmod(os.path.join(target_path, 'python', 'G2Audit.py'), 0o770)
     os.chmod(os.path.join(target_path, 'python', 'G2Command.py'), 0o770)
@@ -195,9 +188,14 @@ if __name__ == '__main__':
 
     # resources
     set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'resources'), 0o660)
-    # some exceptions
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db'), 0o770)
-    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db.template'), 0o770)
+    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db'), 0o660)
+    os.chmod(os.path.join(target_path, 'resources', 'templates', 'G2C.db.template'), 0o660)
     os.chmod(os.path.join(target_path, 'resources', 'templates', 'setupEnv'), 0o770)
+
+    # sdk
+    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'sdk'), 0o664)
+
+    # var
+    set_permissions_on_files_in_folder_recursive(os.path.join(target_path, 'var'), 0o660)
 
     print('Successfully created.')
