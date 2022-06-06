@@ -1,18 +1,18 @@
 [pylint]
 disable=
-	dangerous-default-value,
-	invalid-name,
-	missing-function-docstring,
-	missing-module-docstring,
-	redefined-builtin,
-	redefined-outer-name,
-	unspecified-encoding,
     broad-except,
     consider-using-f-string,
+    dangerous-default-value,
+    invalid-name,
     line-too-long,
+    missing-function-docstring,
+    missing-module-docstring,
     no-member,
+    redefined-builtin,
+    redefined-outer-name,
     too-many-branches,
     too-many-locals,
+    unspecified-encoding,
 good-names=
     template-python
 ignore=
