@@ -10,6 +10,7 @@ disable=
     broad-except,
     consider-using-f-string,
     line-too-long,
+    no-member,
     too-many-branches,
     too-many-locals,
 good-names=
