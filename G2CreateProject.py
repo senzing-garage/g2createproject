@@ -25,8 +25,6 @@ def find_replace_in_file(filename, old_string, new_string):
 def get_version_details():
     ''' Return version details as json of currently installed Senzing  '''
 
-    version = build_version = None
-
     try:
         build_version_file = senzing_path.joinpath('g2BuildVersion.json')
         with open(build_version_file) as file_version:
