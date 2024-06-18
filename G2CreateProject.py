@@ -108,7 +108,7 @@ def set_permissions_on_files_in_folder_recursive(path, mode, files_to_ignore=[])
 
 if __name__ == '__main__':
 
-    # senzing_path on normal rpm/deb install = /opt/senzing/g2
+    # senzing_path on normal rpm/deb install = /opt/senzing/sz
     # senzing_install_root would then = /opt/senzing
     senzing_path = Path(__file__).resolve().parents[1]
     senz_install_root = Path(__file__).resolve().parents[2]
